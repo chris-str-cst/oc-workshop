@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>de.idealo.common.spring-boot</groupId>
+        <artifactId>idealo-spring-boot-parent</artifactId>
+        <version>6.0.13</version>
+    </parent>
+
+    <groupId>systems</groupId>
+    <artifactId>springboot-test</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <description>springboot test</description>
+
+    <scm>
+        <!-- TODO fill in path to git repo -->
+        <connection>scm:git:ssh://git@code.eu.idealo.com:7999/PATH_TO_REPO/springboot-test</connection>
+        <developerConnection>scm:git:ssh://git@code.eu.idealo.com:7999/PATH_TO_REPO/springboot-test</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>de.idealo.common.spring-boot</groupId>
+            <artifactId>idealo-spring-boot-starter-micrometer</artifactId>
+            <version>${idealo-springboot.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.idealo.common.spring-boot</groupId>
+            <artifactId>idealo-spring-boot-starter-icinga-status</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.idealo.common.spring-boot</groupId>
+            <artifactId>idealo-spring-boot-starter-logging</artifactId>
+        </dependency>
+        <dependency>
+            <!-- includes sleuth and spring-cloud, enables traces in logs -->
+            <groupId>de.idealo.common.spring-boot</groupId>
+            <artifactId>idealo-spring-boot-starter-accesslog</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-failsafe-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>
