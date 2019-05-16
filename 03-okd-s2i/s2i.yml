@@ -1,0 +1,70 @@
+apiVersion: v1
+kind: Template
+metadata:
+  name: build-template
+objects:
+- apiVersion: v1
+  kind: ImageStream
+  metadata:
+    name: ${APPLICATION_NAME}
+- apiVersion: v1
+  kind: BuildConfig
+  metadata:
+    labels:
+      app: ${APPLICATION_NAME}-${STAGE}
+      kind: buildConfig
+      strategy: source
+    name: ${APPLICATION_NAME}-${STAGE}
+  spec:
+    completionDeadlineSeconds: 1800
+    resources:
+      requests:
+        cpu: 1
+        memory: 256Mi
+      limits:
+        cpu: 2
+        memory: 1Gi
+    output:
+      to:
+        kind: ImageStreamTag
+        name: ${APPLICATION_NAME}:latest
+      failedBuildsHistoryLimit: 25
+      successfulBuildsHistoryLimit: 5
+    postCommit: {}
+    runPolicy: "SerialLatestOnly"
+    source:
+      contextDir: ${CONTEXT_DIR}
+      git:
+        ref: ${BRANCH}
+        uri: ${REPOSITORY_URL}
+      type: Git
+      
+    strategy:
+      sourceStrategy:
+        #incremental: true
+        forcePull: true
+        from:
+          kind: ImageStreamTag
+          name: 's2i-jdk11:latest'
+      type: Source
+
+parameters:
+  - name: APPLICATION_NAME
+    displayName: Application name
+    description: The name of the application
+    required: true
+  - name: REPOSITORY_URL
+    displayName: URL of the source respository
+    required: true
+  - name: BRANCH
+    displayName: Branch name to build
+    description: The brnach of the application
+    required: true
+    value: master
+  - name: CONTEXT_DIR
+    value: "."
+  - name: STAGE
+    displayName: Stage name
+    description: The stage of the application
+    value: dev
+    required: true
