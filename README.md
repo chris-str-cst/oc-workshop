@@ -33,12 +33,12 @@ Further resoruces
 - https://medium.com/@tonistiigi/advanced-multi-stage-build-patterns-6f741b852fae
 - https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
 
-## 03-okd-s2i
+## Source2image: 03-okd-s2i
 s2i: https://hub.docker.com/r/fabric8/s2i-java // https://github.com/fabric8io-images/s2i
 
 `cd 03-okd-s2i`
 
-# Steps
+### Steps
 
 1. Import the base image: `oc import-image -h`
 
@@ -74,7 +74,7 @@ see README.md in 04-okd-chained-build
 - Multi node: leader election, work queue, scatter/gather
 
 ### Ambassador / proxy - 05-ambassador
-The main container communicates or gets called through an ambassador. (Proxy, name resolver, etc.)
+The main container communicates or gets called through an ambassador. (Proxy, name resolver, ...)
 https://github.com/openshift/oauth-proxy/blob/master/contrib/sidecar.yaml
 
 ### Sidecar - 06-sidecare
