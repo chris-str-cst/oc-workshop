@@ -1,6 +1,8 @@
 # Workshop
 ## 01-basic-components
-
+1. Start [minishift](https://github.com/minishift/minishift)
+2. Check if everything is working
+3. `01-basic-components/setup.sh # to setup a project`
 ## 02-docker-multistage
 To play around with and get a feel for multistage builds
 
@@ -9,9 +11,9 @@ To play around with and get a feel for multistage builds
 cd 02-docker-multistage
 IMAGE_NAME=spring-test
 
-docker build $IMAGE_NAME .
-docker build -t ${IMAGE_NAME}:runtime-alpine --target runtime-alpine .
-docker build -t ${IMAGE_NAME}:debug --target debug .
+docker build $IMAGE_NAME . # builds default stage
+docker build -t ${IMAGE_NAME}:runtime-alpine --target runtime-alpine . #builds runtime-alpine stage
+docker build -t ${IMAGE_NAME}:debug --target debug . # builds debug stage
 
 
 TAG_TO_RUN=runtime-alpine
@@ -34,15 +36,15 @@ Further resoruces
 - https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
 
 ## Source2image: 03-okd-s2i
-s2i: https://hub.docker.com/r/fabric8/s2i-java // https://github.com/fabric8io-images/s2i
+Used base images: https://hub.docker.com/r/fabric8/s2i-java // https://github.com/fabric8io-images/s2i
 
 `cd 03-okd-s2i`
 
 ### Steps
 
-1. Import the base image: `oc import-image -h`
+1. Import the base image: `oc import-image -h # check which params you can set`
 
-`oc apply -f imagestream.yml`
+`oc apply -f imagestream.yml # create imagestream`
 
 2. create s2i-build-config: 
 
@@ -68,16 +70,19 @@ https://docs.openshift.com/online/dev_guide/builds/build_strategies.html
 ## 04-okd-chained-build
 see README.md in 04-okd-chained-build
 
-## Pattern 
+## Platform pattern 
 ![pattern](https://devopedia.org/images/article/122/7070.1538988426.jpg)
-- Single node multi container: sidecar, ambassador, adapter
-- Multi node: leader election, work queue, scatter/gather
+- **Single node multi container: sidecar, ambassador, adapter**
+- *Multi node: leader election, work queue, scatter/gather*
 
 ### Ambassador / proxy - 05-ambassador
+Run the files via `oc apply -f <file/directory>`
+
+
 The main container communicates or gets called through an ambassador. (Proxy, name resolver, ...)
 https://github.com/openshift/oauth-proxy/blob/master/contrib/sidecar.yaml
 
-### Sidecar - 06-sidecare
+### Sidecar - 06-sidecar
 Enhances basic pod functionality. Logging, circut breaker, ...
 
 ### Adapter - 07-adapter
