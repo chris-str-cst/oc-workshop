@@ -11,7 +11,7 @@ To play around with and get a feel for multistage builds
 cd 02-docker-multistage
 IMAGE_NAME=spring-test
 
-docker build $IMAGE_NAME . # builds default stage
+docker build -t $IMAGE_NAME . # builds default stage
 docker build -t ${IMAGE_NAME}:runtime-alpine --target runtime-alpine . #builds runtime-alpine stage
 docker build -t ${IMAGE_NAME}:debug --target debug . # builds debug stage
 
@@ -89,4 +89,4 @@ Enhances basic pod functionality. Logging, circut breaker, ...
 Like an adapter in software development. Changes the interface or converts the requests from or to the main container 
 
 ## Openshift guide
-https://github.com/openshift-labs/devops-guides/tree/ocp-3.9
+https://github.com/openshift-labs/devops-guides
