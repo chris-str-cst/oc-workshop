@@ -36,9 +36,14 @@ Further resoruces
 - https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
 
 ## Source2image: 03-okd-s2i
+You'll see how to use the source2image tool within openshift.
+
+
 Used base images: https://hub.docker.com/r/fabric8/s2i-java // https://github.com/fabric8io-images/s2i
 
 `cd 03-okd-s2i`
+
+
 
 ### Steps
 
@@ -55,6 +60,9 @@ oc process -f s2i.yml \
   -p REPOSITORY_URL=https://github.com/spring-guides/gs-spring-boot.git \
   -p CONTEXT_DIR=complete \
   | oc apply -f -
+
+# create service / deployment
+ oc new-app --image-stream spring-boot  #-o yaml
 ```
 
 3. start a build: `oc start-build spring-boot-dev -w # -w watches the output`
@@ -68,7 +76,7 @@ https://docs.openshift.com/online/dev_guide/builds/advanced_build_operations.htm
 https://docs.openshift.com/online/dev_guide/builds/build_strategies.html
 
 ## 04-okd-chained-build
-see README.md in 04-okd-chained-build
+see README.md in 04-okd-chained-build. You'll see how to chain build to get a minimal runtime-image. 
 
 ## Platform pattern 
 ![pattern](https://devopedia.org/images/article/122/7070.1538988426.jpg)
@@ -87,6 +95,14 @@ Enhances basic pod functionality. Logging, circut breaker, ...
 
 ### Adapter - 07-adapter
 Like an adapter in software development. Changes the interface or converts the requests from or to the main container 
+
+### Adapter - 08-12factor
+```bash
+cd 08-12factor
+oc apply -f .
+
+# checkout the two pods with the secrets and configs
+```
 
 ## Openshift guide
 https://github.com/openshift-labs/devops-guides
