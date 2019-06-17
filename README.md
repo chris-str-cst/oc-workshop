@@ -62,9 +62,6 @@ oc process -f s2i.yml \
   -p REPOSITORY_URL=https://github.com/spring-guides/gs-spring-boot.git \
   -p CONTEXT_DIR=complete \
   | oc apply -f -
-
-# create service / deployment
- oc new-app --image-stream spring-boot  #-o yaml
 ```
 
 3. start a build: `oc start-build spring-boot-dev -w # -w watches the output`
