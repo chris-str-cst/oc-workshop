@@ -18,6 +18,8 @@ docker build -t ${IMAGE_NAME}:debug --target debug . # builds debug stage
 
 TAG_TO_RUN=runtime-alpine
 docker run --rm -p 8080:8080 ${IMAGE_NAME}:${TAG_TO_RUN}
+
+# Now let's translate this to OpenShift v3.9
 ```
 
 ### Docker basics
@@ -25,9 +27,9 @@ docker run --rm -p 8080:8080 ${IMAGE_NAME}:${TAG_TO_RUN}
 #### COPY VS ADD
 "Although ADD and COPY are functionally similar, generally speaking, COPY is preferred. That’s because it’s more transparent than ADD. COPY only supports the basic copying of local files into the container, while ADD has some features (like local-only tar extraction and remote URL support) that are not immediately obvious. Consequently, the best use for ADD is local tar file auto-extraction into the image, as in ADD rootfs.tar.xz /."
 
-## Entrypoint https://docs.docker.com/engine/reference/builder/#entrypoint
+#### Entrypoint https://docs.docker.com/engine/reference/builder/#entrypoint
 `--init # https://github.com/krallin/tini`
-## ENTRYPOINT VS. CMD
+#### ENTRYPOINT VS. CMD
 https://docs.docker.com/engine/reference/builder/#entrypoint
 
 
