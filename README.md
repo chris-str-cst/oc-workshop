@@ -1,4 +1,24 @@
 # Workshop
+
+## Nomenclature
+- OKD: Origin Community Distribution of Kubernetes, see: https://www.okd.io/
+- docker multistage: https://docs.docker.com/develop/develop-images/multistage-build/
+- s2i: source2image, see down below
+- oc: OpenShift Client (CLI) commands
+  - `oc logs`
+  - `oc new-project`
+  - `oc new-build`
+  - `oc start-build`
+  - `oc get`
+  - `oc describe`
+- Please research the following concepts for yourself
+  - build vs. buildConfig
+  - secret
+  - configMap
+  - container vs. pod
+  - image vs. imageStream
+  - deployment vs. deploymentConfig
+
 ## 01-basic-components
 1. Start [minishift](https://github.com/minishift/minishift) **OR** login to an cluster
 2. Check if everything is working (is your client working, are you logged in on CLI?)
