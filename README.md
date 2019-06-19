@@ -5,13 +5,15 @@
 - docker multistage: https://docs.docker.com/develop/develop-images/multistage-build/
 - s2i: source2image, see down below
 - oc: OpenShift Client (CLI) commands
-  - `oc logs`
   - `oc new-project`
   - `oc new-build`
   - `oc start-build`
   - `oc get`
   - `oc describe`
-- Please research the following concepts for yourself
+  - `oc logs`
+  - `oc ... -o yaml`
+  - creating, processing `oc process` and using `oc apply -f -` templates
+- Please research the following concepts yourself
   - build vs. buildConfig
   - secret
   - configMap
