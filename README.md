@@ -92,8 +92,8 @@ oc process -f s2i.yml \
 ```
 
 3. start a build: `oc start-build spring-boot-dev -w # -w watches the output`
-
-4. Create svc and dc: `oc new-app --image-stream spring-boot`
+4. wait till the build finishes or add the following to the next command:`--allow-missing-imagestream-tags`  
+5. Create svc and dc: `oc new-app --image-stream spring-boot`
 
 
 #### Resources
