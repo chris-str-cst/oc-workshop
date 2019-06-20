@@ -12,14 +12,14 @@
   - `oc describe`
   - `oc logs`
   - `oc ... -o yaml`
-  - creating, processing `oc process` and using `oc apply -f -` templates
+  - creating, processing `oc process` and using `oc apply` templates
 - Please research the following concepts yourself
-  - build vs. buildConfig
+  - build vs. buildConfig (bc)
   - secret
   - configMap
   - container vs. pod
-  - image vs. imageStream
-  - deployment vs. deploymentConfig
+  - image vs. imageStream (is)
+  - deployment vs. deploymentConfig (dc)
 
 ## 01-basic-components
 1. Start [minishift](https://github.com/minishift/minishift) **OR** login to an cluster
@@ -92,7 +92,7 @@ oc process -f s2i.yml \
 ```
 
 3. start a build: `oc start-build spring-boot-dev -w # -w watches the output`
-4. wait till the build finishes or add the following to the next command:`--allow-missing-imagestream-tags`  
+4. wait till the build finishes or add the following to the **next** command:`--allow-missing-imagestream-tags`  
 5. Create svc and dc: `oc new-app --image-stream spring-boot`
 
 
